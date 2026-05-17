@@ -39,7 +39,7 @@ except:
 
 @tool
 def search_patch_overview(version: str) -> str:
-    """查詢某個版本的完整改動"""
+    """查詢某個版本的完整改動 (例如重點、哪些英雄被 buff/nerf)"""
     try:
         if os.path.exists("./patch_db"):
             db = Chroma(
@@ -47,9 +47,10 @@ def search_patch_overview(version: str) -> str:
                 embedding_function=embeddings
             )
 
+            # 💡 升級 1：把 k=5 加大到 k=15，確保能抓到足夠多的改動碎片來寫總結
             docs = db.similarity_search(
-                query=f"patch {version}",
-                k=5,
+                query=f"patch {version} overview champions items buffs nerfs",
+                k=15,
                 filter={"patch": version}
             )
 
@@ -57,7 +58,6 @@ def search_patch_overview(version: str) -> str:
         else:
             rag = "無本地資料"
         return f"""
-
 [Patch {version} Overview]
 
 本地資料：
@@ -65,7 +65,7 @@ def search_patch_overview(version: str) -> str:
 
 請整理：
 1. 版本重點
-2. Buff / Nerf 英雄
+2. Buff / Nerf 英雄清單
 3. 系統 / 裝備改動
 """
     except Exception as e:
@@ -74,7 +74,7 @@ def search_patch_overview(version: str) -> str:
 
 @tool
 def search_patch_notes(champion_name: str) -> str:
-    """查詢某英雄 patch 改動"""
+    """查詢某個特定英雄的 patch 改動數值與細節"""
     try:
         if not os.path.exists("./patch_db"):
             return "❌ 無 patch DB"
@@ -84,10 +84,11 @@ def search_patch_notes(champion_name: str) -> str:
             embedding_function=embeddings
         )
 
+        # 💡 升級 2：將過濾器改為正確的 Metadata 標籤
         docs = db.similarity_search(
-            query=f"{champion_name} buffs nerfs abilities patch",
-            k=3,
-            filter={"type": "champion"}
+            query=f"{champion_name} abilities stats buffs nerfs",
+            k=4,
+            filter={"type": "patch_note"}  # 允許搜尋所有更新日誌，靠向量檢索精準抓出該英雄
         )
 
         rag = "\n".join([d.page_content for d in docs]) if docs else "無本地資料"
@@ -98,9 +99,9 @@ def search_patch_notes(champion_name: str) -> str:
 本地資料：
 {rag}
 
-請整理：
-- buff / nerf
-- 技能改動
+請整理 {champion_name} 的：
+- 是 buff 還是 nerf？
+- 具體的技能數值改動 (請列出改動前後的差異)
 """
     except Exception as e:
         return f"錯誤: {e}"
