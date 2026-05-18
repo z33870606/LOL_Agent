@@ -22,12 +22,12 @@ ensure_latest_patch_in_db()
 
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
-# ✅ 載入賽事數據
+#載入賽事數據
 try:
     df = pd.read_csv("oracles_match_data.csv", low_memory=False)
     df['champion'] = df['champion'].astype(str)
     df['teamname'] = df['teamname'].astype(str)
-    print(f"✅ 成功載入賽事數據，共 {len(df)} 筆。")
+    print(f"成功載入賽事數據，共 {len(df)} 筆。")
 except:
     print("❌ 找不到 csv")
     df = pd.DataFrame()
@@ -47,9 +47,9 @@ def search_patch_overview(version: str) -> str:
                 embedding_function=embeddings
             )
 
-            # 💡 升級 1：把 k=5 加大到 k=15，確保能抓到足夠多的改動碎片來寫總結
             docs = db.similarity_search(
                 query=f"patch {version} overview champions items buffs nerfs",
+                #取前15資料
                 k=15,
                 filter={"patch": version}
             )
@@ -77,14 +77,13 @@ def search_patch_notes(champion_name: str) -> str:
     """查詢某個特定英雄的 patch 改動數值與細節"""
     try:
         if not os.path.exists("./patch_db"):
-            return "❌ 無 patch DB"
+            return "沒有patch DB"
 
         db = Chroma(
             persist_directory="./patch_db",
             embedding_function=embeddings
         )
 
-        # 💡 升級 2：將過濾器改為正確的 Metadata 標籤
         docs = db.similarity_search(
             query=f"{champion_name} abilities stats buffs nerfs",
             k=4,
@@ -244,7 +243,7 @@ def run_agent(query: str):
 
 if __name__ == "__main__":
 
-    # ✅ 測試 query（你可以改這裡）
+    # 測試 query
     query = "請給我26.10版本的Ash更新?"
 
     result = run_agent(query)
