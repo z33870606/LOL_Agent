@@ -4,7 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 from langchain_community.document_loaders import AsyncHtmlLoader
 from langchain_community.document_transformers import Html2TextTransformer
-# 💡 這裡新增了 MarkdownHeaderTextSplitter
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -16,12 +15,12 @@ def get_latest_patch_info():
     base_url = "https://www.leagueoflegends.com"
     list_url = f"{base_url}/en-us/news/tags/patch-notes/"
     
-    print("🔍 正在檢查最新版本公告...")
+    print("檢查最新版本公告")
     try:
         response = requests.get(list_url, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
         
-        # 尋找第一個包含 patch-notes 的連結 (通常是最新的)
+        # 尋找第一個包含 patch-notes 的連結
         link = soup.select_one("a[href*='patch-'][href*='-notes']")
         
         if not link:
@@ -37,19 +36,19 @@ def get_latest_patch_info():
         
         return patch_url, "unknown"
     except Exception as e:
-        print(f"❌ 檢查最新版本失敗: {e}")
+        print(f"檢查最新版本失敗: {e}")
         return None, None
 
 def fetch_and_process_patch_notes(url: str, version: str):
     """
     使用 LangChain 工具下載並透過「Markdown 標題」切塊存入 ChromaDB
     """
-    print(f"📥 開始下載並解析版本 {version} 的資料...")
+    print(f"開始下載並解析版本 {version} 的資料")
     loader = AsyncHtmlLoader([url])
     docs = loader.load()
 
     if not docs:
-        print("❌ 無法載入網頁。")
+        print("無法載入網頁。")
         return
 
     # 1. 轉成純文字 Markdown
@@ -84,7 +83,7 @@ def fetch_and_process_patch_notes(url: str, version: str):
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     db = Chroma(persist_directory="./patch_db", embedding_function=embeddings)
     db.add_documents(final_docs)
-    print(f"✅ 版本 {version} 的資料已成功以「標題切塊法」存入本地資料庫！")
+    print(f"版本 {version} 的資料已成功以「標題切塊法」存入本地資料庫！")
 
 def ensure_latest_patch_in_db():
     """
@@ -93,16 +92,16 @@ def ensure_latest_patch_in_db():
     url, version = get_latest_patch_info()
     
     if not url or version == "unknown":
-        print("⚠️ 無法獲取最新版本資訊，跳過更新。")
+        print("無法獲取最新版本資訊，跳過更新。")
         return
 
-    print(f"💡 網路上最新版本為: {version}")
+    print(f"網路上最新版本為: {version}")
 
     # 檢查本地資料庫是否已經有這個版本
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
     if not os.path.exists("./patch_db"):
-        print("⚠️ 找不到本地資料庫，準備建立新庫...")
+        print("找不到本地資料庫，準備建立新庫...")
         fetch_and_process_patch_notes(url, version)
         return
 
@@ -112,9 +111,9 @@ def ensure_latest_patch_in_db():
     existing_docs = db.similarity_search("patch", k=1, filter={"patch": version})
     
     if existing_docs:
-        print(f"🆗 版本 {version} 已經存在於本地資料庫中，無需更新。")
+        print(f"版本 {version} 已經存在於本地資料庫中，無需更新。")
     else:
-        print(f"🆕 發現新版本 {version}！開始自動擷取並更新...")
+        print(f"發現新版本 {version}！開始自動擷取並更新...")
         fetch_and_process_patch_notes(url, version)
 
 if __name__ == "__main__":
