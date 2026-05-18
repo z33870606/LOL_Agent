@@ -29,7 +29,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: 4. 執行爬蟲與資料庫更新程式
-      run: python main.py # 如果你的 python 檔名不是 main.py，請在這裡修改
+      run: python update_patch_db.py # 如果你的 python 檔名不是 main.py，請在這裡修改
 
     - name: 5. 將產生的 txt 檔與資料庫提交回 GitHub
       run: |
