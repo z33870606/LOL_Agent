@@ -1,0 +1,876 @@
+# League of Legends Patch 26.10 Notes
+
+The season of demons continues with Patch 26.10!
+
+Game Updates
+
+Riot Cashmiir, sternest
+
+2026-05-12T18:00:00.000Z
+
+> We’ve got some followup for the recent Season 2 changes to bring some of the
+> more overpowered content in line and give a bump to some things that haven’t
+> seen the adoption that they probably should. Items and runes are still key
+> here - we’ve got nerfs to Deathfire Touch, Gluttonous Greaves, and Voltaic
+> Cyclosword, and some buffs to Stormraider’s Surge and the two new starting
+> items introduced last patch. Lee Sin’s throwing off the weights with
+> limiters removed on his shield and some other modernization changes, and
+> Quinn is heading into the jungle. We’ve also got some behavior updates with
+> termination votes for disrupted games, and improved detection models for
+> text.  
+>  
+> Looking for more information on all things League of Legends? Check out our
+> community-run wiki _here_ _!_  
+>  
+> Wrong patch notes? You can find the _TFT patch notes_ _here_ _!_
+
+Erika "Riot Cashmiir" Haas
+
+Steven "Riot sternest" Earnest
+
+## Patch Highlights
+
+Rain Shepherd Ivern and PROJECT: Quinn will be available May 13, 2026.
+
+## Essence Emporium
+
+> The Essence Emporium is back and will run from May 13 to June 10! Along with
+> chromas and other special Emporium content, we’re adding a brand new
+> title—”Big Serious Gamer”—for those that have mountains of BE piled up.
+
+## Champions
+
+### Ambessa
+
+> After getting to see the impact of last patch’s ultimate nerfs, they’ve been
+> very effective at increasing counterplay at high skill levels. However, we
+> still see an opportunity to shift some power from jungle into top while
+> promoting a bruiser playstyle. As a result, we’re giving her some better
+> early power, while keeping her jungle clear and general lategame potential
+> the same.
+
+* * *
+
+#### Q - Cunning Sweep / Sundering Slam
+
+  * Target Max Health Damage : 2 / 3 / 4 / 5 / 6% ⇒ 4 / 4.5 / 5 / 5.5 / 6%
+  * Bonus Monster Damage : 125 ⇒ 75
+
+* * *
+
+####  R - Public Execution
+
+  * Healing Percentage : 10 / 12.5 / 15% ⇒ 15 / 17.5 / 20%
+  * Healing Effectiveness vs Monsters : 40%⇒ 25%
+
+### Anivia
+
+> The Ice Birb has been strong for quite some time, icing out opponents in
+> top, mid, and support without much build or playstyle differentiation, which
+> is why we’re opting for base stat adjustments. While the change will impact
+> her across roles, we’re targeting her durability to allow for more all-in
+> windows to crack the egg in top lane in particular.
+
+* * *
+
+#### Base Stats
+
+  * Base Armor : 21 ⇒ 19
+  * Armor Growth : 4.5 ⇒ 4.1
+
+### Ashe
+
+> As one of our premier utility ADCs, Ashe is pumping out a bit too much
+> damage. We’re giving her a minor nerf to her Q damage so she can’t have the
+> best of both worlds.
+
+* * *
+
+#### Q - Ranger's Focus
+
+  * Total Damage : 110 / 117.5 / 125 / 132.5 / 140% AD ⇒ 110 / 115 / 120 / 125 / 130% AD
+
+### Galio
+
+> Our favorite Demacian colossus has been quite sad between the removal of
+> Phase Rush and the mid role quest adjustments. We’re flipping the script and
+> helping him deliver justice by reducing some of his mana costs and tuning up
+> the reward for a well-aimed Justice Punch. His ultimate is also lacking a
+> bit of oomph in the damage department with how epic it is, so we’re helping
+> it scale with his signature stat!
+
+* * *
+
+#### Q - Winds of War
+
+  * Mana Cost : 70 / 75 / 80 / 85 / 90 ⇒ 60 / 65 / 70 / 75 / 80
+
+* * *
+
+####  E - Justice Punch
+
+  * Total Damage : 90 / 130 / 170 / 210 / 250 (+90% AP) ⇒ 100 / 135 / 170 / 205 / 240 (+100% AP)
+
+* * *
+
+####  R - Hero’s Entrance
+
+  *   NEW   Total Damage : Now scales with 100% bonus magic resistance
+
+### Lee Sin
+
+> Over time, Lee Sin has watched as other champs surpass him in both flair and
+> mobility. We are looking to give him more opportunities to use the tools
+> that allow him to fly around the map while making sure his high moments
+> truly feel like such at all moments in the game.
+
+* * *
+
+#### W - Safeguard
+
+  * Shield : 70 / 115 / 160 / 205 / 250 (+80% AP) ⇒ 60 / 105 / 150 / 195 / 240 (+ 80% AP)
+  * Flat Cooldown : 12s when used on non-champions and 6 when used on champions ⇒ 7s at all points
+  *   NEW   Shield on non-champions : Lee Sin gets his shield when jumping to a minion or ward
+
+* * *
+
+#### E - Tempest
+
+  * Magic Damage : 35 / 60 / 85 / 110 / 135 (100% AD) ⇒ 35 / 60 / 85 / 110 / 135 (90% AD)
+
+* * *
+
+####  R - Dragon’s Rage
+
+  *   NEW   Unconditional Collateral : A champion’s body will continue to fly, knock up, and do damage even if killed mid-flight
+
+### Naafiri
+
+> Naafiri has been top dog for a while now in both mid and jungle. We are
+> looking to tame some of her power by reducing her damage output a bit.
+
+* * *
+
+#### Q - Darkin Daggers
+
+  * Minimum Bonus Physical Damage : 30 / 45 / 60 / 75 / 90 (+ 40% bonus AD) -⇒ 30 / 42.5 / 55 / 67.5 / 80 (+ 40% bonus AD)
+  * Maximum Bonus Physical Damage : 60 / 90 / 120 / 450 / 180 (+ 140% bonus AD) ⇒ 60 / 85 / 110 / 135 / 160 (+ 140% bonus AD)
+
+* * *
+
+####  R - Hounds’ Pursuit
+
+  * Physical Damage : 150 / 250 / 350 (120% bonus AD ) + 15 / 25 / 35 (+12% bonus AD) per packmate ⇒ 150 / 225 / 300 (120% bonus AD) + 15 / 22.5 / 30 ( +12% bonus AD) per packmate
+
+### Quinn
+
+> Quinn has been struggling in the top lane environment due to a number of
+> system changes across 2026. We’re looking to let her impact the map with her
+> unique ultimate as a laner by reducing her high mana barrier and also want
+> to open the door (bush?) to the jungle. We’re excited to see if she can
+> thrive as a natural predator in the jungle, and see if she and Valor can
+> prey on the latest new jungler we introduced, Fizz (birds like fish)!
+
+* * *
+
+#### P - Harrier
+
+  *   NEW   Bonus Monster Damage : 50
+
+* * *
+
+#### Q - Blinding Assault
+
+  *   NEW   Bonus Monster Damage : Now deals 50% increased damage to monsters
+
+* * *
+
+#### R - Behind Enemy Lines
+
+  * Mana Cost : 100 / 50 / 0 ⇒ 50 / 25 / 0
+
+### Shyvana
+
+> With the introduction of the most recent Shyvana changes, players have been
+> finding success building more health and ability haste. As such, we’re
+> looking to bring a bit of her innate defensive capabilities down to make
+> taking down this dragon a bit more reasonable.
+
+* * *
+
+#### Base Stats
+
+  * Health per level : 100 ⇒ 95
+
+* * *
+
+####  W - Inferno Aegis
+
+  * Cooldown : 13 / 12 / 11 / 10 / 9 ⇒ 13 / 12.25 / 11.5 / 10.75 / 10
+  * Shield : 75 / 95 / 115 / 135 / 155 (+12% bonus health) ⇒ 60 / 80 / 100 / 120 / 140 (+12% bonus health)
+
+### Smolder
+
+> Smolder's early game has been bolstered significantly after gaining access
+> to Deathfire Touch. While we’re nerfing DFT, we still expect it to be his
+> best keystone, so we’re also tapping him down to compensate.  
+>  
+> Update: Smolder continued to skyrocket in winrate this patch despite the
+> previous nerfs as players adapted builds. We’re nerfing him again and will
+> continue to monitor his performance after the Black Cleaver and Deathfire
+> Touch interaction is changed in the next patch.
+
+* * *
+
+#### Base Stats
+
+  * Base AD : 60 ⇒ 58
+
+* * *
+
+####  Q - Super Scorcher Breath
+
+  * Damage : 60 / 75 / 90 / 105 / 120 (+130% bonus AD) ⇒ 60 / 70 / 80 / 90 / 100 (+130% bonus AD)
+  * Crit Increase : 50% (+15% from Infinity Edge) ⇒ 75% (+22.5% from Infinity Edge)
+
+* * *
+
+#### W - Achooo!
+
+  * Explosion Physical Damage : 10 - 110 (+65% bonus AD) (+80% AP) ⇒ 10 - 110 (+50% bonus AD) (+80% AP)
+
+* * *
+
+####  R -MMOOOMMMM!
+
+  * Damage : 200 / 300 / 400 (+110% bonus AD) ⇒ 150 / 250 / 350 (+100% bonus AD)
+
+### Wukong
+
+> Across roles, Wukong has been struggling to find success as of late. We’re
+> looking to help him turn things around by empowering his trickster playstyle
+> to reward clever and creative uses of his clones.
+
+* * *
+
+#### W - Warrior Trickster
+
+  * Clone Damage : 30 / 35 / 40 / 45 / 50% ⇒ 40 / 45 / 50 / 55 / 60%
+  * Clone Duration : 3.25 ⇒ 4
+
+* * *
+
+####  E - Nimbus Strike
+
+  * Bonus Attack Speed : 35 / 40 / 45 / 50 / 55% ⇒ 40 / 45 / 50 / 55 / 60%
+
+### Zed
+
+> Zed has soared in power along with huge spikes in pickrate with Season 2’s
+> changes, and we think he’s still going to be extremely solid despite
+> systemic nerfs. We’d like to preserve his identity as a strong laner, but
+> hit some of his most guaranteed damage.
+
+* * *
+
+#### P - Contempt for the Weak
+
+  * Max Health Damage : 6 / 8 / 10% ⇒ 5 / 7.5 / 10%
+
+* * *
+
+####  E - Shadow Slash
+
+  * Damage : 70 / 95 / 120 / 145 / 170 (+80% bonus AD) ⇒ 70 / 92.5 / 115 / 137.5 / 160 (+70% bonus AD)
+
+### Zeri
+
+> Zeri’s new direction and feel have seemed really promising across tiers, but
+> with her winrate being lower as players take time to adjust their playstyle
+> and itemization (looking at you Stormrazor, not looking at you Shiv!). We
+> want to make Zeri speed gaming more accessible!
+
+* * *
+
+#### Q - Burst Fire
+
+  * Base Damage : 21 / 24 / 27 / 30 / 33 ⇒ 22 / 26 / 30 / 34 / 38
+  * Excess attack speed conversion to AD : 50% ⇒ 60%
+
+* * *
+
+####  R - Lightning Crash
+
+  * [BUGFIX] Overcharged duration : Attacks during R currently extend the R duration by 1.5s. Changing that to 2.5s to match the new Hypercharged MS stack duration.
+
+## Items
+
+### Doran's Bow
+
+> Having just been introduced last patch, we’re starting to see Doran’s Bow
+> being picked up by a few champions, but the risk of taking a starting item
+> with no health was a bit too great even considering the damage upside. We’re
+> looking to make it a bit more compelling to take that risk.
+
+  * Attack Damage : 6 ⇒ 8
+
+### Doran's Helm
+
+> Doran’s Helm is meant to be an exciting item to hold onto after the early
+> game with the resistances it offers scaling better than Doran’s Shield’s
+> health regeneration. However, it is currently a bit too difficult to make it
+> out of the early game. We are looking to lighten the early game load so that
+> players can get to the mid game high points.
+
+  * Health : 110 ⇒ 140
+
+### Gluttonous Greaves / Immortal Path
+
+> The new omnivamp boots line is successfully filling a gap in boot
+> itemization we intended, filling in nicely as a defensive-offensive hybrid
+> item for many of our high damage champs across roles. We’re now seeing them
+> being taken at a bit too high of a rate and are looking to bring them back
+> in line with other options.
+
+  * Total Cost : 950g ⇒ 1000g
+  * Slay - Omnivamp Per Stack : 1% per takedown, up to 6 stacks max ⇒ .6% per takedown, up to 10 stacks max
+
+### Lich Bane
+
+> Last patch, we made adjustments to further differentiate our two AP Sheen
+> items. For Lich Bane, rather than proccing Spellblade through getting in
+> their face (like what Dusk and Dawn builds provide), we’re tuning up Lich
+> Bane’s Movespeed to help you get into position for a better scaling proc.
+
+  * AP ratio : 40% AP ⇒ 45% AP
+  * Movespeed : 4% ⇒ 6%
+
+### Voltaic Cyclosword
+
+> Following its adjustments and the removal of Opportunity, we expected
+> Voltaic Cyclosword to see more play. We’re happy to see it making an impact
+> on the meta, but are lowering its power slightly by increasing its price
+> tag.
+
+  * Total Cost : 2900g ⇒ 3000g
+
+## Runes
+
+### Deathfire Touch
+
+> Even after the hotfix nerf, Deathfire Touch is burning a bit too strongly in
+> early laning trades. We’re shaving off just a bit of damage at lower levels
+> to make it less oppressive.
+
+  * Damage Per Second : 4 - 12 (Levels 1 - 18) (+7% bonus AD) (+2.5% AP) ⇒ 3 - 12 (Levels 1 - 18) (+7% bonus AD) (+2.5% AP)
+
+### Stormraider's Surge
+
+> Stormraider's Surge has landed on the soft side, underperforming on most
+> champions trying it out, so we are going to push its duration a bit.
+
+  * Move Speed : [40% Melee | 30% Ranged] for 3 seconds ⇒ [48% Melee | 36% Ranged] for 4 seconds
+
+## Game Systems
+
+#### Minion Aggro
+
+> Previously, when an enemy champion attacked an allied minion, the enemy
+> champion would enter the minions’ aggro priority list. We’re removing this
+> action entirely from aggroing minions to prevent it feeling like minions
+> sometimes randomly change their target. They have a nexus to take down,
+> anyway.
+
+## Disruptive Game Termination
+
+> When we detect severely disruptive behaviors during a match that add up to
+> irredeemably ruining their team’s chances of winning , we’ll allow the team
+> with the disruptive player to vote to end the match so that everyone can
+> save themselves some time. The bar for this is high, and most penalties will
+> still be distributed post-game. We’re looking to improve upon this system by
+> proactively offering a vote to end the match when severely disruptive
+> behavior is detected during a match.
+
+  * When a player is confirmed to be engaging in severely disruptive behavior during a match, their team will be prompted to vote to end the match. The disruptive player and their premade will not be eligible to vote.
+  * If a match termination vote passes, the team with the disruptive player will not lose any LP or MMR. The other team will receive LP as usual for a win. The disruptive player gets banned.
+  * If a match termination vote fails, the game will continue. The team with the confirmed disruptive player cannot lose LP, but has the opportunity to win LP if they can claim victory. This is primarily to avoid detected behaviors terminating matches that might be close to resolution, like when you’re about to destroy the enemy Nexus but one of your allies a minute ago decided to sell all of their items and run in circles in your base.
+
+## Player Behavior
+
+> We’ve made large updates to our text detection models to more accurately
+> detect disruptive or inappropriate text across all languages with fewer
+> false positives.
+
+## Arena
+
+> Hey Arena brawlers!  
+>  
+> Grab a third friend, and dive head first into the pits, because this patch
+> brings our first event with the much anticipated 3x6!  
+>  
+> Arena is now six teams of three and we can’t wait to see what you all cook
+> up. Will teams of curses, swarms of minions, stat anvils, triple tanks, or
+> something else be your go to strategy?  
+>  
+> We’ve been listening to your feedback on this Arena update and made several
+> adjustments to augments and many of the new features. Our focus for this
+> patch has primarily been around augment levels, and we’ve kept champion
+> changes light since we expect the shift to three teams to shake things up on
+> its own.  
+>  
+> We have heard that many of you feel like collecting stat anvils feels a bit
+> lack luster, and while we intend for this to be a challenging run that you
+> can’t always force we feel it is a little too difficult and a bit under the
+> bar so we’ve made some adjustments, one such change being to increase the
+> maximum power you can roll from 80% - 100%, along with some additional
+> changes listed below. We’ll continue to keep an eye on this as we know it is
+> a favorite to many players, but it loses its charm if this changes from a
+> challenge to a dominant playstyle.  
+>  
+> We’ve also got some adjustments to a few Guest of Honor, in particular our
+> demon of greed, Tahm Kench, we’re tapping down the darker compulsions and
+> increasing the benefits for those with the willpower to abstain. We’ve got
+> plenty more for you to check out so we’ll just leave you with this:  
+>  
+> Those who have found themselves in agony from another’s desire, a collective
+> celebration will bring your health higher.
+
+* * *
+
+#### Augment Buffs
+
+Bravest of the Brave
+
+  * Level 2 gold increased from 750 ⇒ 1500
+
+Fan the Hammer
+
+  * Max level reduced from 3⇒2
+  * Cooldown per side 7/6/5 ⇒ 7/5
+
+Juiced
+
+  * Max level increased to 2
+  * Damage done increased from 4.5% ⇒ 9% of mana spent.
+  * > Capstone: Whenever you spend 400 mana increase Juiced damage by 10% for the rest of the round.
+
+  * Firesale
+  * > When removed or replaced, gain gold equal to 30% of the gold gained by Firesale.
+
+  * Combination Fried Rice
+  * Max level 1 ⇒ 3
+  * > Auto levels based on levels put into the rice augments.
+
+  * Ability Haste -100 ⇒ -50
+  * Damage per level 100% ⇒ 100/125/150%
+  * Healing per level 75%⇒ 75/100/125%
+
+SpellCraft
+
+  * Base slow reduced from 20%⇒10%
+  * AP ratio per red sticker reduced from 40% ⇒ 30%
+  * BAD Ratio per red sticker reduced from 30% ⇒ 20%
+  * Slow per sticker increased from 30% ⇒ 40%
+  * Chroma Flux
+  * Movespeed per sticker increased from 20 ⇒ 30
+  * Stats On Stats On Stats
+  * Capstone: Stat anvil percent amp increased from 10% ⇒ 20%
+  * Stats On Stats
+  * Capstone: Stat anvil percent amp increased from 10% ⇒ 20%
+  * Stats
+  * Capstone: Stat anvil percent amp increased from 10% ⇒ 20%
+  * Bread Sandwich
+  * Max level 1 ⇒ 3
+  * > Auto levels based on levels put into the rice augments.
+
+  * Ability Haste per level 200 ⇒ 200/300/400
+
+Gamba Anvil
+
+  * Max level 2>1
+  * Legendary item anvil reduction 500 > 750
+  * Stat anvil reduction 150/300 > 250
+  * Ability Haste per level 200 ⇒ 200/300/400
+
+* * *
+
+#### Augment Nerfs
+
+Draw Your Sword
+
+  * Bonus HP : 25/35/45% ⇒ 25/30/35%
+  * Bonus AD : 25/35/45% ⇒ 25/30/35%
+  * AS: 20% ⇒ 15%
+
+Jeweled Gauntlet
+
+  * Crit Damage : 140/160/180% ⇒ 140/150/160%
+
+Righteous Fury
+
+  * Spell damage per stack : 2/4/6% ⇒ 2/3/4%
+
+The Brutalizer
+
+  * Max level reduced from 3 ⇒ 2
+
+* * *
+
+#### Champions
+
+Katarina
+
+  * Passive refund on takedown reduced from 75s ⇒ 15s
+
+Shyvana
+
+  * Emberstrike
+  * Damage: 10 / 15 / 20 / 25 / 30 (+ 110% AD) ⇒ 10 / 15 / 20 / 25 / 30 (+ 100% AD)
+
+Xin Zhao
+
+  * Three Talon Strike
+  * Damage: 15 / 30 / 45 / 60 / 75 (+ 40% bonus AD) ⇒ 15 / 30 / 45 / 60 / 75 (+ 30% bonus AD)
+  * Cooldown: 7 / 6.5 / 6 / 5.5 / 5 ⇒ 8 / 7.5 / 7 / 6.5 / 6
+  * Audacious Charge
+  * AS: (+ 10% per 100 AP) ⇒ (+ 5% per 100 AP)
+  * Cooldown: 11 ⇒ 13
+
+* * *
+
+#### System Changes
+
+Petricite Grove
+
+  * Adjusted player spawn locations
+
+Petricite Grove’s Petricite Bombs
+
+> Each spawner's initial spawns 6-12 seconds after combat starts.
+
+  * Respawn rate changed from 15s ⇒ 20s
+
+Ancestral wood’s Bulwark Blossom
+
+  * Added ticks to its healthbar.
+
+Reckoner’s Arena Pillars
+
+  * Added ticks to the healthbars.
+
+Base line durability
+
+> Damage Reduction Percent increased by 5% on round 8 (Crafting round).
+
+* * *
+
+#### Item Changes
+
+Black Hole Gauntlet
+
+> Black Hole size now scales more directly with your champion's size.
+
+> Size is now capped at 3 times its base size.
+
+Pyromancer's Cloak
+
+  * Blaze AoE per additional burn source reduced from 40 ⇒ 30
+  * Per champion cooldown 3 ⇒ 5s
+
+* * *
+
+#### Guests of Honor
+
+Garen: Perseverance
+
+> Tooltip updated to note that you'll heal when at 50 health.
+
+Hwei: Blank Canvas
+
+  * Tooltips updated
+  * Rerolling an augment level offering now has a sticker
+
+Jarvan IV: Heavy Is The Crown
+
+  * Crown Thieves beware, Size adjustment increased from 20% ⇒ 25%.
+
+Tahm Kench: Dark Bargain
+
+  * Compulsion for Power : Stat Anvils granted reduced from 2 ⇒ 1
+  * Compulsion for Wealth : Gold granted reduced from 3000 ⇒ 2500
+  * Abstain from Wealth, Power, and Risk : Max Health restored increased from 5% ⇒ 10%.
+  * > All players are now offered the same choices rather than randomly rolling.
+
+* * *
+
+#### Arena Bugfixes
+
+  * Fixed a bug where players could flash behind a wall (either on purpose or by accident) in the new Petricite Grove map
+  * Fixed a bug where Chauffeur was snapping allies back to their dead teammates position (We promise this won’t happen in teams of 3)
+  * Fixed a bug where Nocturne’s Guest of Honor would some times ult the player irl (aka their entire screen goes dark)
+  * Fixed a bug where players weren’t being granted an additional augment from Tahm Kench’s Guest of Honor if augments slots were full
+  * Fixed a bug where Hivemind was doing twice as much damage as intended
+  * Fixed a bug where ??? is healing much more than intended
+  * Fixed a bug where receiving Prowler’s Claw or Goredrinker from Poppy’s Guest of Honor would break Shardholder eligibility
+  * Fixed a bug where the Void Immolation Quest augment was preventing players from purchasing Rabadon’s Deathcap
+  * Fixed a bug where magic penetration wasn’t being tracked or boosted by Shardholder
+  * Fixed a bug where Minionmancer amplified damage was not being applied to Azir’s Sand Soldiers (W)
+  * Fixed a bug where Double Tap can trigger Power Flower multiples (or consume the entire plant if max leveled)
+  * Fixed some race conditions that occurred when trying to spam click anvils (Please stop using spam clickers)
+  * Fixed a bug where Despoil was not stacking on blinks. They did work on dashes though!
+  * Fixed a bug where players are unable to move while activating Wooglet’s stasis when they have the We’ll Be Right Back capstone unlocked
+  * Fixed a bug where pools from Morgana’s Guest of Honor would sometimes leave invisible pools on other Arenas
+
+* * *
+
+> The following bugs were fixed in 26.9 but were not documented. Our apologies
+> on that!
+
+  * Fixed a bug where Infernal Conduit was not reducing ability cooldowns as expected
+  * Fixed a bug where Puppeteers Pull Their Strings was unaffected by Apex Inventor
+  * Fixed a bug where Hollow Radiance’s Immolate does not trigger
+  * Fixed a bug where purchasing an anvil too early when Poppy is selected as the Guest of Honor would prevent a second prismatic anvil from opening
+  * Fixed a bug where Pinball Snowball is dealing way more damage than expected
+
+## ARAM
+
+#### Champions
+
+Viktor
+
+  * Damage Dealt : 95% ⇒ 100%
+  * Damage Taken : 105% ⇒ 100%
+  * Passive Stacks per Kill
+  * Champion: 20 ⇒ 8
+  * Cannon 10 ⇒ 5
+  *   NEW   In ARAM maps, Viktor gains 1 stack every 5 seconds.
+
+* * *
+
+#### System Changes
+
+Bilgewater Cannon QoL
+
+  * Movement lockout from not taking the canon : 2s ⇒ 0.5s
+  * Movement lockout from landing after taking the canon : removed
+
+## ARAM: Mayhem
+
+> Hello ARAMers!  
+>  
+> In this patch, we’re focusing on quality-of-life improvements for both
+> augments and maps.  
+>  
+> For augments, Upgrade Zhonya’s now grants a bit more movement speed, helping
+> you reposition more fluidly in fights. We’ve also smoothed out usability for
+> Fan the Hammer, Big Brain, and Outlaw’s Grit, making them more intuitive and
+> reliable to use.  
+>  
+> On the map side, Bilgewater Cannons will now have a much shorter delay if
+> you accidentally dismount early, and we’ve removed the brief immobility on
+> landing to keep movement feeling responsive. On Howling Abyss, we fixed an
+> issue where Qiyana could not access her Earth element.  
+>  
+> Our lovely friend Viktor is also getting a small update in ARAM and Mayhem.
+> He now gains stacks over time, with reduced reliance on minion and champion
+> takedowns. This should give him a smoother and more consistent power
+> progression throughout the game.  
+>  
+> See you on the Bridge!
+
+* * *
+
+#### Augments
+
+Big Brain
+
+  *   NEW   Refresh on Respawn or every 70 seconds
+
+Fan the Hammer
+
+  * No longer triggers on minions
+
+Outlaw's Grit   NEW   Stacks now reset based on a 15s duration instead
+of a fixed timer
+
+  * Stacks show up on buff bar
+
+Upgrade Zhonya's
+
+  *   NEW   Grants 50% Bonus MS during Stasis
+
+* * *
+
+#### Champions
+
+Viktor
+
+  * Damage Dealt : 95% ⇒ 100%
+  * Damage Taken : 105% ⇒ 100%
+  * Passive Stacks per Kill
+  * Champion: 20 ⇒ 8
+  * Cannon 10 ⇒ 5
+  *   NEW   In ARAM maps, Viktor gains 1 stack every 5 seconds.
+
+* * *
+
+#### System Changes
+
+Bilgewater Cannon QoL
+
+  * Movement lockout from not taking the canon : 2s ⇒ 0.5s
+  * Movement lockout from landing after taking the canon : removed
+
+* * *
+
+#### ARAM: Mayhem Bugfixes
+
+  * Fixed a bug where Dropkick could permanently reveal an enemy killed by it under specific circumstances.
+  * Fixed a bug where Qiyana would be given water when using W on walls.
+  * Fixed a bug where using Bilgewater’s Cannon would trigger health relics when flying over them.
+  * Fixed a bug where killing a unit with Snowball would sometimes not trigger Upgrade: Snowball’s effect.
+  * Fixed a bug where Azir’s soldiers did not trigger Marksmage.
+  * Fixed a bug where Outlaw’s Grit would be granted stacks by each map’s unique transportation.
+  * Fixed a bug where Gangplank would gain multiplicative amounts of Damage reduction or increase when chaining barrels.
+  * Fixed a bug where Snowball benefited from Item Damage increases.
+  * Fixed a bug where Clones of a champion with Slow and Steady did not have their Attack Speed limited.
+  * Fixed a bug where Bounce of the Poro King went through spellshields.
+  * Fixed a bug where taking certain snowball augments would reset your non-snowball summoner spell’s cooldown.
+  * Fixed a bug where Laser Heal would erroneously reset cooldowns of spells that should have stayed sealed, such as Riven R or Rumble while Overheated.
+  * Fixed a bug where Ultimate Awakening would erroneously reset cooldowns of spells that should have stayed sealed.
+  * Fixed a bug where Dropkick dealt bonus damage to ALL units below the execute threshold, not just champions.
+  * Fixed a bug where Briar could get snowball permanently disabled when using at the same time as her R.
+  * Fixed a bug with various augments where resetting cooldowns of Ammo spells would grant you 1 more charge than the maximum allowed of charges.
+  * Fixed a bug where Neeko would apply Mad Scientist’s size change to her clone twice.
+  * Fixed a bug where Tank Engine incorrectly displayed its granted health in the tooltip.
+
+## Bugfixes & QoL Changes
+
+  * Fixed a bug where Rift Herald’s empowered recall would be consumed if the player was recalling when it was granted.
+  * Fixed a bug where Fear VFX would display a black rectangle, particularly on lower graphics settings
+  * Viego possessing Kled will now spawn mounted on Skaarl with the correct remount HP
+  * Triggering Evelynn Charm as Viego will no longer put Spectral Maw (W) on cooldown
+  * Riftmaker - Void Corruption passive applies more damage amplification than intended.
+  * Fixed a bug where Viego's Blade of the Ruined King (Q) is placed on cooldown if Zaahen Q times out
+  * Fixed an issue where Mordekaiser W would prevent Viego W from being castable or force the spell to go on the wrong cooldown
+  * Fixed a bug where Teemo’s buff icons were missing from his buff bar.
+  * Fixed a bug where friendly projectiles such as Triumph’s healing missile may be destroyed by Lissandra self cast R, Galio R, and Twisted Fate R.
+  * Fixed a bug where Rapid Firecannon’s range indicator would briefly linger after being triggered by Voltaic Cyclosword.
+  * Fixed a bug where Blue team’s middle inhibitor respawn timer would visually refresh when the camera panned away.
+  * Fixed a bug where Rift Herald’s Charge would proc a turret’s Crystalline Overgrowth through Bard’s R.
+  * Fixed a bug where Sylas’ stolen Lissandra R had a chance to fizzle if he cast it in conjunction with a movement spell.
+  * Fixed a bug where Taliyah’s Weaver’s Wall (R) may leave units with collision at its endpoint.
+  * Fixed a bug where Sylas may have less Fury than expected after casting Shyvana’s Dragon’s Descent.
+  * Fixed a bug where Yone P and Corki P were being amplified an additional time from sources of damage amplification.
+  * Fixed a bug where Karma’s RW was not being properly negated by spell shields.
+  * Fixed a bug where Zaahen’s buff icons were missing from his buff bar.
+  * Fixed a bug where Kog’Maw W wouldn’t always proc Statikk Shiv.
+  * Fixed a bug where Fiendhunter Bolts stacks were not lost when attacking turrets.
+  * Fixed a bug where Shyvana’s Q attacks would not apply bonus true damage from Hail of Blades.
+  * Fixed a bug where Gluttonous Greaves could gain additional stacks of Omnivamp by getting a multikill on Bot Lane Quest completion.
+  * Fixed a bug where Gluttonous Greaves and Immortal Path would not inherit the extra Move Speed from Slightly Magical Footwear.
+  * Fixed a bug where certain Vi animations were missing for her W.
+  * The in-game Options menu has been optimized to open faster the first time it is viewed.
+  * [WASD] The keybind to open All Chat has been updated from Shift + Enter to Ctrl + Enter so that it does not conflict with the default keybind for Ability 2
+  * [WASD] Fixed a bug where your champion could stutter when changing auto attack targets while moving if your champion’s auto attack was on cooldown.
+  * [WASD] Fixed a bug where Zeri’s Ultrashock Laser (Ability 2) would fire in the wrong direction when wallriding with Spark Surge (Ability 3)
+
+* * *
+
+#### Joystick and Accessibility Controller Updates
+
+> We are continuing to iterate on our joystick and accessibility support in
+> response to feedback.
+
+  * Accessibility buttons may now be natively mapped to inputs in the in-game Options menu. Turn on WASD input and click on an input to bind it. Pressing a button will bind that button.
+  * The default unchangeable button binds have been removed.
+
+## Upcoming Skins & Chromas
+
+The following skins will be released in this patch:
+
+#### Rain Shepherd Ivern
+
+#### PROJECT: Quinn
+
+The following chromas will be released this patch:
+
+#### Rain Shepherd Ivern
+
+#### PROJECT: Quinn
+
+## Related Articles
+
+  1. Game Updates
+
+2026-04-28T18:00:00.000Z
+
+League of Legends Patch 26.9 Notes
+
+It’s time to hunt demons with Patch 26.9!
+
+  2. Game Updates
+
+2026-04-14T18:00:00.000Z
+
+League of Legends Patch 26.8 Notes
+
+Let’s get groovy with Patch 26.8!
+
+  3. Game Updates
+
+2026-03-31T18:00:00.000Z
+
+League of Legends Patch 26.7 Notes
+
+Tons of fun and fried chicken to be had!
+
+  4. Game Updates
+
+2026-03-17T18:00:00.000Z
+
+League of Legends Patch 26.6 Notes
+
+It’s time for First Stand and Shyvana’s update!
+
+  5. Game Updates
+
+2026-03-03T19:00:00.000Z
+
+League of Legends Patch 26.5 Notes
+
+Welcome to the official patch of First Stand, the first major international
+tournament of the year!
+
+  6. Game Updates
+
+2026-02-18T19:00:00.000Z
+
+League of Legends Patch 26.4 Notes
+
+Happy Lunar Revel, welcome to patch 26.4!
+
+  7. Game Updates
+
+2026-02-03T19:00:00.000Z
+
+Patch 26.3 Notes
+
+Celebrate the new year and revel in Patch 26.3 🎊
+
+  8. Game Updates
+
+2026-01-21T19:00:00.000Z
+
+Patch 26.2 Notes
+
+Patch 26.2 ready to deploy!
+
+  9. Game Updates
+
+2026-01-07T19:00:00.000Z
+
+Patch 26.1 Notes
+
+Demacia rises in Patch 26.1 🛡️
+
