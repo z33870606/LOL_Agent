@@ -1,8 +1,12 @@
 requests
 beautifulsoup4
+html2text
+pandas
+python-dotenv
+sentence-transformers
+langchain
 langchain-community
 langchain-text-splitters
 langchain-chroma
 langchain-huggingface
-html2text
-sentence-transformers
+langgraph
