@@ -1,0 +1,8 @@
+requests
+beautifulsoup4
+langchain-community
+langchain-text-splitters
+langchain-chroma
+langchain-huggingface
+html2text
+sentence-transformers
