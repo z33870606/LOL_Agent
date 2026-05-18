@@ -301,7 +301,7 @@ if __name__ == "__main__":
     my_session = f"terminal_session_{int(time.time())}"
     
     # 💡 在這裡測試中文輸入與複合型問題！
-    query1 = "我要Galio的新版本改動。"
+    query1 = "我要Ambessa的新版本改動。"
     
     print(f"正在分析您的問題：{query1}\n" + "-"*40)
     
