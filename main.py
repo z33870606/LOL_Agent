@@ -12,10 +12,7 @@ from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
 from update_patch_db import ensure_latest_patch_in_db
 
-# ==============================
-# 1. 初始化系統與全域變數
-# ==============================
-
+# 初始化系統與全域變數
 
 def initialize_system(csv_path: str = "oracles_match_data.csv"):
     """
@@ -24,10 +21,8 @@ def initialize_system(csv_path: str = "oracles_match_data.csv"):
     load_dotenv()
     ensure_latest_patch_in_db()
 
-    # 初始化 Embeddings
     init_embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
-    # 初始化賽事資料
     file_path = Path(csv_path)
     if file_path.exists():
         try:
@@ -35,9 +30,9 @@ def initialize_system(csv_path: str = "oracles_match_data.csv"):
             if 'champion' in init_df.columns and 'teamname' in init_df.columns:
                 init_df['champion'] = init_df['champion'].astype(str)
                 init_df['teamname'] = init_df['teamname'].astype(str)
-            print(f"成功載入賽事數據，共 {len(init_df)} 筆。")
+            print(f"載入賽事數據，共 {len(init_df)} 筆。")
         except Exception as e:
-            print(f"讀取 CSV 時發生未預期的錯誤: {e}")
+            print(f"讀取 CSV 時發生錯誤: {e}")
             init_df = pd.DataFrame()
     else:
         print(f"找不到指定的 CSV 檔案: {file_path.absolute()}")
@@ -45,16 +40,14 @@ def initialize_system(csv_path: str = "oracles_match_data.csv"):
 
     return init_embeddings, init_df
 
-# 💡 修正點：在模組載入時就執行初始化，並將變數命名為工具所預期的 embeddings 與 df
+# 初始化將變數命名為 embeddings 與 df
 embeddings, df = initialize_system()
 
 
-# ==============================
-# 2. Tools
-# ==============================
+# Tools 區塊
 
 def get_patch_db():
-    """輔助函式：取得 ChromaDB 連線實例，避免重複初始化"""
+    """取得 ChromaDB 連線"""
     if not os.path.exists("./patch_db"):
         return None
     return Chroma(
@@ -71,33 +64,20 @@ def search_patch_overview() -> str:
     """
     db = get_patch_db()
     if not db:
-        return "系統警告：無本地資料庫，請回答查無資料。"
+        return "無本地資料庫，請回答查無資料。"
 
     try:
-        docs = db.similarity_search(
-            query="patch overview champions items buffs nerfs",
-            k=15
-        )
+        docs = db.get(where={"type": "pre_computed_summary"})
 
-        if not docs:
-            return "系統警告：資料庫中目前沒有更新總覽，請直接回答查無最新版本資訊，嚴禁自行捏造。"
+        if not docs or not docs.get('documents') or len(docs['documents']) == 0:
+            return "資料庫中目前沒有預先計算的更新總覽，請直接回答查無最新版本資訊。"
 
-        rag_chunks = []
-        for d in docs:
-            category = d.metadata.get('category', '')
-            subject = d.metadata.get('subject', '')
-            sub_subject = d.metadata.get('sub_subject', '')
-            
-            headers = [h for h in [category, subject, sub_subject] if h]
-            header_text = f"[{' > '.join(headers)}]" if headers else "[General]"
-            rag_chunks.append(f"{header_text}\n{d.page_content}")
-            
-        rag = "\n".join(rag_chunks)
-        return f"[Latest Patch Overview]\n本地資料：\n{rag}"
+        overview_content = docs['documents'][0]
+        
+        return f"[Latest Patch Overview]\n本地預先計算的總結資料：\n{overview_content}"
 
     except Exception as e:
         return f"資料庫查詢發生錯誤: {e}"
-
 
 @tool
 def search_champion_patch_notes(champion_name: str) -> str:
@@ -106,11 +86,8 @@ def search_champion_patch_notes(champion_name: str) -> str:
     何時使用：當使用者明確詢問某個具體英雄的改動時，例如「請問 Ashe 的更新是什麼？」、「李星有被改嗎？」。
     參數 champion_name：請傳入該英雄的英文名稱（例如 Ashe, LeeSin）。
     """
-    # ==================== [除錯專區 1：檢查 Agent 傳入參數] ====================
-    print("\n" + "="*40)
-    print(f"[DEBUG] 🤖 Agent 正在呼叫 search_champion_patch_notes 工具")
+    print(f"\n[DEBUG] 🤖 Agent 正在呼叫 search_champion_patch_notes 工具")
     print(f"[DEBUG] 📥 Agent 傳入的原始參數 champion_name: '{champion_name}'")
-    # =========================================================================
 
     db = get_patch_db()
     if not db:
@@ -118,10 +95,10 @@ def search_champion_patch_notes(champion_name: str) -> str:
 
     try:
         print(f"[DEBUG] 🔍 正在向 ChromaDB 進行過濾查詢 (subject='{champion_name}')...")
-        docs = db.similarity_search(
-            query=champion_name, 
-            k=4, 
-            filter={
+        
+        #使用 db.get() 回傳的是一個 Dictionary
+        docs = db.get(
+            where={
                 "$and": [
                     {"type": "patch_note"},
                     {"subject": champion_name}
@@ -129,33 +106,38 @@ def search_champion_patch_notes(champion_name: str) -> str:
             }
         )
 
-       # ============= [除錯專區 2：檢查資料庫回傳結果] ====================
-        print(f"[DEBUG] 📊 ChromaDB 回傳的文檔數量: {len(docs)}")
-        if docs:
-            print(f"[DEBUG] 📄 第一筆文檔的 Metadata: {docs[0].metadata}")
-            print(f"[DEBUG] 📄 第一筆文檔的內容片段: {docs[0].page_content[:100]}...\n")
-        else:
-            print(f"[DEBUG] ⚠️ ChromaDB 找不到任何符合 filter 條件的資料！")
-        print("="*40 + "\n")
-        # =========================================================================
+        # 計算文檔數量 (看 ids 這個陣列有多長)
+        doc_count = len(docs.get('ids', []))
+        print(f"[DEBUG] 📊 ChromaDB 回傳的文檔數量: {doc_count}")
 
-        if not docs:
+        if doc_count == 0:
+            print(f"[DEBUG] ⚠️ ChromaDB 找不到任何符合 filter 條件的資料！")
             return f"系統警告：資料庫中沒有 {champion_name} 的改動資料。"
 
+        # 除錯：印出第一筆的 Metadata (從 metadatas 陣列中拿取)
+        print(f"[DEBUG] 📄 第一筆文檔的 Metadata: {docs['metadatas'][0]}")
+
+        # 解析 Dictionary 格式，將 metadatas 和 documents 組合起來
         rag_chunks = []
-        for d in docs:
-            subject = d.metadata.get('subject', '')
-            sub_subject = d.metadata.get('sub_subject', '') 
+        for i in range(doc_count):
+            meta = docs['metadatas'][i]
+            content = docs['documents'][i]
+            
+            subject = meta.get('subject', '')
+            sub_subject = meta.get('sub_subject', '') 
             headers = [h for h in [subject, sub_subject] if h]
             header_text = f"[{' > '.join(headers)}]" if headers else "[General]"
-            rag_chunks.append(f"{header_text}\n{d.page_content}")
+            
+            rag_chunks.append(f"{header_text}\n{content}")
             
         rag = "\n\n".join(rag_chunks)
+        print("="*40 + "\n")
+        
         return f"[Patch Notes Data for {champion_name}]\n{rag}"
 
     except Exception as e:
+        print(f"[DEBUG] ❌ 工具執行發生嚴重錯誤: {e}")
         return f"資料庫查詢發生錯誤: {e}"
-
 
 @tool
 def get_champion_esports_stats(champion_name: str) -> str:
@@ -165,7 +147,7 @@ def get_champion_esports_stats(champion_name: str) -> str:
     參數 champion_name：請傳入該英雄的英文名稱。
     """
     if 'df' not in globals() or df.empty:
-        return "系統警告：賽事資料庫未載入。"
+        return "賽事資料庫未載入。"
     
     try:
         champ = df[
@@ -186,7 +168,6 @@ def get_champion_esports_stats(champion_name: str) -> str:
     except Exception as e:
         return f"數據運算發生錯誤: {e}"
 
-
 @tool
 def get_team_esports_stats(team_name: str) -> str:
     """
@@ -195,7 +176,7 @@ def get_team_esports_stats(team_name: str) -> str:
     注意：如果使用者詢問的是「英雄」，請絕對不要使用此工具，改用 search_champion_patch_notes 或 get_champion_stats。
     """
     if 'df' not in globals() or df.empty:
-        return "系統警告：賽事資料庫未載入，請確認 csv 檔案狀態。"
+        return "賽事資料庫未載入，請確認 csv 檔案狀態。"
     
     try:
         team_df = df[
@@ -214,12 +195,9 @@ def get_team_esports_stats(team_name: str) -> str:
 
     except Exception as e:
         return f"隊伍數據運算發生錯誤: {e}"
-    
-# ==============================
-# 3. Agent
-# ==============================
 
-# 修正 1：更新工具列表，使其與第二階段重構的函式名稱完全一致
+# Agent 區塊
+
 tools = [
     search_patch_overview,
     search_champion_patch_notes,
@@ -234,7 +212,6 @@ model = init_chat_model(
 
 memory = MemorySaver()
 
-# 💡 精簡且聚焦的 System Prompt
 SYSTEM_PROMPT = """
 你是一個專業的英雄聯盟 (LOL) 數據分析師 Agent。
 你的任務是透過工具檢索最新版本改動、職業賽事數據與英雄對戰勝率，並提供精確、客觀的分析。
@@ -243,6 +220,7 @@ SYSTEM_PROMPT = """
 1. 語言轉換：所有工具的 `champion_name` 或 `team_name` 參數必須使用「英文官方名稱」（例如：將使用者輸入的「李星」轉換為 "Lee Sin"、「T1」保持 "T1"）。
 2. 工具至上：如果工具回傳「系統警告」或「查無資料」，請直接告知使用者，嚴禁自行捏造數據或版本內容。
 3. 職責邊界：禁止提供任何玩家操作技巧或出裝教學。
+4. 絕對忠實於檢索資料（防禦知識盲區）：英雄聯盟會不斷推出新英雄（例如：Ambessa）。請絕對信任工具回傳的文本！嚴禁因為不認識新英雄，就自行將名字「自動校正」或替換成你記憶中的舊英雄（例如把 Ambessa 寫成 Aurelion Sol）。工具寫什麼，你就必須一字不漏地輸出什麼名字！
 
 【回應結構指南】
 請根據使用者詢問的內容類型，採用以下結構回答（若問題包含多個類型，請組合使用）：
@@ -255,7 +233,6 @@ SYSTEM_PROMPT = """
 
 - 關於「職業賽場數據 (勝率/出場數)」：
   提供該英雄或隊伍的總出場數、具體勝率。若是英雄，需額外提供其主要路線。
-
 """
 
 agent = create_agent(
@@ -264,17 +241,14 @@ agent = create_agent(
     checkpointer=memory
 )
 
-# ==============================
-# 4. 執行與測試
-# ==============================
+
+# 執行與測試區塊
 
 def run_agent(query: str, session_id: str = "default_session") -> str:
     """
     執行 LOL Agent 並回傳分析結果。
     """
     try:
-        # 修正 1：移除 messages 陣列中的 system prompt，只傳遞 user 的問題
-        # 框架的記憶體機制會自動管理上下文
         result = agent.invoke(
             {
                 "messages": [
@@ -285,27 +259,22 @@ def run_agent(query: str, session_id: str = "default_session") -> str:
             config={"configurable": {"thread_id": session_id}}
         )
 
-        # 修正 2：從回傳的狀態字典中，提取最後一則訊息 (也就是 Agent 的回答)
         final_message = result["messages"][-1].content
         return final_message
 
     except Exception as e:
         return f"Agent 執行時發生錯誤: {e}"
 
-# ==============================
-# 5. 主程式
-# ==============================
+
+# 主程式
 
 if __name__ == "__main__":
-    # 動態生成這次測試的 session ID
     my_session = f"terminal_session_{int(time.time())}"
     
-    # 💡 在這裡測試中文輸入與複合型問題！
-    query1 = "我要Ambessa的新版本改動。"
+    query1 = "我要新版本改動。"
     
-    print(f"正在分析您的問題：{query1}\n" + "-"*40)
+    print(f"正在分析您的問題：{query1}\n----------------------------------------")
     
-    # 呼叫run_agent
     result1 = run_agent(query1, session_id=my_session)
     
     print(result1)
