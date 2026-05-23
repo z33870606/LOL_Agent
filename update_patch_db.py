@@ -87,18 +87,20 @@ def fetch_and_process_patch_notes(url: str, version: str):
             safe_text = safe_text[:cutoff_index]
             break  # 找到第一個斷點就停止尋找
             
-    # 以防該版本剛好沒有上述標題，還是保留 15000 字元的機制
-    safe_text = safe_text[:15000]
+    # 以防該版本剛好沒有上述標題，還是保留 20000 字元
+    safe_text = safe_text[:20000]
     
     # 建立總結 Prompt
     summary_prompt = f"""
-    請閱讀以下英雄聯盟 {version} 版本的完整更新公告，並撰寫一份約 300 字的「版本精華總結」。
+    請閱讀以下英雄聯盟 {version} 版本的完整更新公告，並撰寫一份約 500 字的「版本精華總結」。
     
     【絕對遵守規則】
     1. 系統或機制的重大改變
     2. 被增強 (Buff) 的主要英雄清單
     3. 被削弱 (Nerf) 的主要英雄清單
-    4. 嚴格防幻覺：你列出的「所有英雄名稱」，必須 100% 完全照抄原文出現過的名字！絕對不可以自行替換、聯想或捏造原文沒有提到的英雄（例如：若原文寫 Ambessa，絕不能改成 Aurelion Sol）。
+    4. 重要的裝備 (Items) 改動清單
+    5. 重要的符文(Rune) 改動清單
+    6. 嚴格防幻覺：你列出的「所有英雄名稱」，必須 100% 完全照抄原文出現過的名字！絕對不可以自行替換、聯想或捏造原文沒有提到的英雄（例如：若原文寫 Ambessa，絕不能改成 Aurelion Sol）。
     
     以下是更新公告原文：
     {safe_text}
